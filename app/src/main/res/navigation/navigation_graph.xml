@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/goalsListFragment">
+
+    <fragment
+        android:id="@+id/goalsListFragment"
+        android:name="com.ruslanlialko.achievegoals.presentation.list.GoalsListFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_goals_list" >
+        <action
+            android:id="@+id/action_goalsListFragment_to_goalDetailsFragment"
+            app:destination="@id/goalDetailsFragment" >
+            <argument
+                android:name="goal"
+                app:argType="com.ruslanlialko.achievegoals.data.Goal" />
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/goalDetailsFragment"
+        android:name="com.ruslanlialko.achievegoals.presentation.details.GoalDetailsFragment"
+        android:label="Goal Details"
+        tools:layout="@layout/fragment_goal_details">
+
+    </fragment>
+</navigation>

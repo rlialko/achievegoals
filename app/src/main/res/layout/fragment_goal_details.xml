@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.ruslanlialko.achievegoals.presentation.details.GoalDetailsViewModel" />
+    </data>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/tvDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:drawablePadding="4dp"
+            android:maxLines="1"
+            android:text="@{viewmodel.goal.description}"
+            android:textAppearance="@android:style/TextAppearance.Material.Body2"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="12sp"
+            tools:text="Description" />
+
+        <TextView
+            android:id="@+id/tvGoal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:drawablePadding="4dp"
+            android:maxLines="1"
+            android:text="@{Integer.toString(viewmodel.goal.goal)}"
+            android:textAppearance="@android:style/TextAppearance.Material.Body2"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="12sp"
+            tools:text="Goal" />
+
+        <TextView
+            android:id="@+id/tvRewardTrophy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:drawablePadding="4dp"
+            android:maxLines="1"
+            android:text="@{viewmodel.goal.rewardTrophy}"
+            android:textAppearance="@android:style/TextAppearance.Material.Body2"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="12sp"
+            tools:text="Trophy" />
+
+        <TextView
+            android:id="@+id/tvRewardPoints"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:drawablePadding="4dp"
+            android:maxLines="1"
+            android:text="@{Integer.toString(viewmodel.goal.rewardPoints)}"
+            android:textAppearance="@android:style/TextAppearance.Material.Body2"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="12sp"
+            tools:text="Reward Points" />
+    </LinearLayout>
+</layout>

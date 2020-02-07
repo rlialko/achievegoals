@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Achieve Goals</string>
+    <string name="loading_error">Error while loading goals</string>
+</resources>
