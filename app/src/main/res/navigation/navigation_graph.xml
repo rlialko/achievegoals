@@ -9,10 +9,14 @@
         android:id="@+id/goalsListFragment"
         android:name="com.ruslanlialko.achievegoals.presentation.list.GoalsListFragment"
         android:label="@string/goals_list_title"
-        tools:layout="@layout/fragment_goals_list" >
+        tools:layout="@layout/fragment_goals_list">
         <action
             android:id="@+id/action_goalsListFragment_to_goalDetailsFragment"
-            app:destination="@id/goalDetailsFragment" >
+            app:destination="@id/goalDetailsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right">
             <argument
                 android:name="goal"
                 app:argType="com.ruslanlialko.achievegoals.data.Goal" />
