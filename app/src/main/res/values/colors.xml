@@ -4,4 +4,8 @@
     <color name="colorPrimaryDark">#225783</color>
     <color name="colorAccent">#388E3C</color>
     <color name="colorBackground">#242424</color>
+    <color name="colorGold">#d4af37</color>
+    <color name="colorSilver">#D3D3D3</color>
+    <color name="colorBronze">#cd7f32</color>
+    <color name="colorZombieHand">#D3D3D3</color>
 </resources>

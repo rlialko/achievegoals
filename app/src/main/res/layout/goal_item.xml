@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
+        <import type="android.text.TextUtils" />
+
+        <import type="android.view.View" />
 
         <variable
             name="goal"
@@ -13,82 +18,106 @@
             type="com.ruslanlialko.achievegoals.presentation.list.GoalsListViewModel" />
     </data>
 
-    <LinearLayout
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?android:attr/selectableItemBackground"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
         android:clickable="true"
         android:focusable="true"
+        android:foreground="?android:attr/selectableItemBackground"
         android:onClick="@{() -> viewmodel.openGoal(goal)}"
-        android:orientation="vertical"
-        android:paddingStart="8dp"
-        android:paddingTop="16dp"
-        android:paddingEnd="8dp"
-        android:paddingBottom="16dp">
+        app:cardCornerRadius="10dp">
 
-        <TextView
-            android:id="@+id/tvTitle"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawablePadding="4dp"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:text="@{goal.title}"
-            android:textAppearance="@android:style/TextAppearance.Material.Body1"
-            android:textColor="@android:color/white"
-            android:textSize="16sp"
-            tools:text="Easy walk steps" />
+            android:orientation="vertical"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="8dp">
 
-        <TextView
-            android:id="@+id/tvDescription"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:drawablePadding="4dp"
-            android:maxLines="1"
-            android:text="@{goal.description}"
-            android:textAppearance="@android:style/TextAppearance.Material.Body2"
-            android:textColor="@android:color/darker_gray"
-            android:textSize="14sp"
-            tools:text="500 steps" />
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@{goal.title}"
+                android:textAppearance="@android:style/TextAppearance.Material.Body1"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                tools:text="Easy walk steps" />
 
-        <TextView
-            android:id="@+id/tvGoal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:drawablePadding="4dp"
-            android:maxLines="1"
-            android:text="@{Integer.toString(goal.goal)}"
-            android:textAppearance="@android:style/TextAppearance.Material.Body2"
-            android:textColor="@android:color/darker_gray"
-            android:textSize="12sp"
-            tools:text="20" />
+            <TextView
+                android:id="@+id/tvDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvTitle"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="4dp"
+                android:layout_toStartOf="@id/ivTrophyCup"
+                android:text="@{goal.description}"
+                android:textAppearance="@android:style/TextAppearance.Material.Body2"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="14sp"
+                tools:text="Walk 500 steps a day" />
 
-        <TextView
-            android:id="@+id/tvRewardTrophy"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:drawablePadding="4dp"
-            android:maxLines="1"
-            android:text="@{goal.rewardTrophy}"
-            android:textAppearance="@android:style/TextAppearance.Material.Body2"
-            android:textColor="@android:color/darker_gray"
-            android:textSize="12sp"
-            tools:text="bronze" />
+            <TextView
+                android:id="@+id/tvRewardPoints"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvDescription"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="8dp"
+                android:maxLines="1"
+                android:text="@{@plurals/points(goal.rewardPoints, goal.rewardPoints)}"
+                android:textAppearance="@android:style/TextAppearance.Material.Body2"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="12sp"
+                tools:text="20 points" />
 
-        <TextView
-            android:id="@+id/tvRewardPoints"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:drawablePadding="4dp"
-            android:maxLines="1"
-            android:text="@{Integer.toString(goal.rewardPoints)+` points`}"
-            android:textAppearance="@android:style/TextAppearance.Material.Body2"
-            android:textColor="@android:color/darker_gray"
-            android:textSize="12sp"
-            tools:text="20 points" />
-    </LinearLayout>
+            <TextView
+                android:id="@+id/tvRewardTrophy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:alpha="0.1"
+                android:maxLines="1"
+                android:text="@{goal.getRewardTrophyString}"
+                android:textAllCaps="true"
+                android:textAppearance="@android:style/TextAppearance.Material.Body2"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="40sp"
+                tools:text="bronze" />
+
+            <ImageView
+                android:id="@+id/ivTrophyCup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/ic_cup"
+                android:tint="@{TextUtils.equals(goal.rewardTrophy, `gold_medal`) ? @color/colorGold : TextUtils.equals(goal.rewardTrophy, `silver_medal`) ? @color/colorSilver : @color/colorBronze }"
+                android:visibility="@{TextUtils.equals(goal.rewardTrophy, `zombie_hand`) ? View.INVISIBLE : View.VISIBLE}"
+                tools:ignore="ContentDescription" />
+
+            <ImageView
+                android:id="@+id/ivTrophyHand"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/ic_hand"
+                android:tint="@{@color/colorZombieHand}"
+                android:visibility="@{TextUtils.equals(goal.rewardTrophy, `zombie_hand`) ? View.VISIBLE : View.INVISIBLE}"
+                tools:ignore="ContentDescription" />
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
 </layout>

@@ -16,7 +16,17 @@ data class Goal(
     @ColumnInfo(name = "goal") var goal: Int,
     @ColumnInfo(name = "reward_trophy") var rewardTrophy: String,
     @ColumnInfo(name = "reward_points") var rewardPoints: Int
-) : Parcelable
+) : Parcelable {
+    fun getRewardTrophyString(): String {
+        return when (rewardTrophy) {
+            "gold_medal" -> "GOLD"
+            "silver_medal" -> "SILVER"
+            "bronze_medal" -> "BRONZE"
+            "zombie_hand" -> "ZOMBIE HAND"
+            else -> ""
+        }
+    }
+}
 
 data class GoalsResponse(
     var items: List<GoalResponse>
