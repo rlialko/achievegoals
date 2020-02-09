@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.ruslanlialko.achievegoals.data.Goal
 import com.ruslanlialko.achievegoals.databinding.FragmentGoalDetailsBinding
@@ -26,7 +25,6 @@ class GoalDetailsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         goalViewModel.setGoal(goal)
-        (activity as AppCompatActivity).supportActionBar?.title = goal.title
         viewDataBinding = FragmentGoalDetailsBinding.inflate(inflater, container, false).apply {
             viewmodel = goalViewModel
             lifecycleOwner = this@GoalDetailsFragment.viewLifecycleOwner

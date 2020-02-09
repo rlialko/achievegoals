@@ -25,7 +25,7 @@
     <fragment
         android:id="@+id/goalDetailsFragment"
         android:name="com.ruslanlialko.achievegoals.presentation.details.GoalDetailsFragment"
-        android:label="Goal Details"
+        android:label="@string/goal_details_title"
         tools:layout="@layout/fragment_goal_details">
 
     </fragment>

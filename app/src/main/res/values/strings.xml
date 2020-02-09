@@ -1,11 +1,19 @@
 <resources>
     <string name="app_name">Achieve Goals</string>
     <string name="goals_list_title">Daily Goals</string>
+    <string name="goal_details_title">Goal Details</string>
     <string name="loading_error">Error while loading goals</string>
+    <string name="steps">/%d steps</string>
+    <string name="distance">/%d meters</string>
 
     <plurals name="points">
         <item quantity="one">%d point</item>
         <item quantity="other">%d points</item>
+    </plurals>
+
+    <plurals name="just_points">
+        <item quantity="one">point</item>
+        <item quantity="other">points</item>
     </plurals>
 
 </resources>
